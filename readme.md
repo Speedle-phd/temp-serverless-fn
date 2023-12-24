@@ -39,3 +39,15 @@ Context data i.e. Auth-Stuff
    from = '' <-- custom path with wildcard (/api/*)
    to = '' <-- to actual path with param (/.netlify/functions/:splat)
    status=200
+
+# cors 
+
+in netlify function add headers in your return statement
+-> CORS
+
+return {
+   headers: {
+      'Access-Control-Allow-Origin': '*',
+   }
+   //... more code
+}
