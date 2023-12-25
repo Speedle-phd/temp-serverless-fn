@@ -11,6 +11,7 @@ const airtable = new Airtable(options).base(baseId).table('products')
 
 exports.handler = async(e,c) => {
    console.log(e.rawQuery)
+   console.log(e.queryStringParameters)
    if(!e.rawQuery){
       const {records: data} = await airtable.list()
       return {
