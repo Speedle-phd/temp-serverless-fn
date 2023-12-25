@@ -10,7 +10,6 @@ const airtable = new Airtable(options).base(baseId).table('survey')
 
 exports.handler = async (e, c) => {
    const {httpMethod} = e
-   console.log(httpMethod)
    if(httpMethod === "GET"){
       const {records: data} = await airtable.list()
       return {
@@ -19,7 +18,7 @@ exports.handler = async (e, c) => {
       }
    } else if (httpMethod === "PUT") {
       let {id, oldValue} = JSON.parse(e.body)
-      console.log(e.headers.host)
+      console.log(e.headers["client-ip"])
       const incrementVote = ++oldValue
       const update = await airtable.update(id, {
          votes: incrementVote,
